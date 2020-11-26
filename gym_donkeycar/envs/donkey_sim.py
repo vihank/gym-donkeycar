@@ -142,7 +142,11 @@ class DonkeyUnitySimHandler(IMesgHandler):
         logger.info("sending car config.")
         self.set_car_config(conf)
         # self.set_racer_bio(conf)
-        cam_config = self.extract_keys(conf, ["img_w", "img_h", "img_d", "img_enc", "fov", "fish_eye_x", "fish_eye_y", "offset_x", "offset_y", "offset_z", "rot_x"])
+        #logger.info("conf info: " + str(conf["cam_resolution"][1]))
+        cam_config = self.extract_keys(conf, ["img_enc", "fov", "fish_eye_x", "fish_eye_y", "offset_x", "offset_y", "offset_z", "rot_x"])
+        cam_config["img_w"] = conf["cam_resolution"][1]
+        cam_config["img_h"] = conf["cam_resolution"][0]
+        cam_config["img_d"] = conf["cam_resolution"][2]
         self.send_cam_config(**cam_config)
         logger.info("done sending car config.")
 
@@ -392,6 +396,7 @@ class DonkeyUnitySimHandler(IMesgHandler):
             with fish_eye_x/y == 0.0 then you get no distortion
             img_enc can be one of JPG|PNG|TGA
         """
+        logger.info("cam_config info: " + str(img_w))
         msg = {"msg_type" : "cam_config",
                "fov" : str(fov),
                "fish_eye_x" : str(fish_eye_x),

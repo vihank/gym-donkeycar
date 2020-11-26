@@ -21,8 +21,9 @@ def supply_defaults(conf):
     defaults = [("start_delay", 5.0),
                 ("max_cte", 5.0),
                 ("frame_skip", 2),
-                ("cam_resolution", (120,160,3)),
-                ("log_level", logging.INFO)]
+                ("cam_resolution", (66,200,3)),
+                ("log_level", logging.INFO),
+                ("fov", 35)]
 
     for key, val in defaults:
         if not key in conf:
