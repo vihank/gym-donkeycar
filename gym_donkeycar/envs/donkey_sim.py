@@ -396,7 +396,6 @@ class DonkeyUnitySimHandler(IMesgHandler):
             with fish_eye_x/y == 0.0 then you get no distortion
             img_enc can be one of JPG|PNG|TGA
         """
-        logger.info("cam_config info: " + str(img_w))
         msg = {"msg_type" : "cam_config",
                "fov" : str(fov),
                "fish_eye_x" : str(fish_eye_x),

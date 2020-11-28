@@ -23,7 +23,7 @@ def supply_defaults(conf):
                 ("frame_skip", 2),
                 ("cam_resolution", (66,200,3)),
                 ("log_level", logging.INFO),
-                ("fov", 35)]
+                ("fov", 30)]
 
     for key, val in defaults:
         if not key in conf:
